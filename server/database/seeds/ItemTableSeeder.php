@@ -1,0 +1,45 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class ItemTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+                // 一件だけinsertする
+        DB::table('items')->insert([
+            'name' => 'エアマックス 95',
+            'description' => '1995年のランニングマックスモデルの復刻版。時代を席巻した名モデルAIR MAX95。当時は斬新でハイテクなルックスがストリートのファッションシーンを席巻しました。',
+            'price' => 25000,
+            'seller' => 'Taro',
+            'email' => 'taro@example.com',
+            'image' => 'エアマックス95.jpg',
+        ]);
+
+        # paramに配列を代入
+        $param = [[
+            'name' => 'フットスケープ',
+            'description' => '横にシューレースがある斬新なモデル。大切にしていただける方にお譲りします。',
+            'price' => 18000,
+            'seller' => 'Jiro',
+            'email' => 'jiro@example.com',
+            'image' => 'フットスケイプ.jpg'
+        ],
+        [
+            'name' => 'ポンプフューリー',
+            'description' => 'ポンプを押すと、空気によってパイプが膨らみ足型にフィットします。',
+            'price' => 18000,
+            'seller' => 'Teru',
+            'email' => 'teru@example.com',
+            'image' => 'ポンプフューリー.jpg'
+        ]];
+        # DB::table->insertでレコードの登録
+        DB::table('items')->insert($param);
+    }
+}
