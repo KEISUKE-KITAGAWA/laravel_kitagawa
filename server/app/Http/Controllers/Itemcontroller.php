@@ -31,7 +31,7 @@ class Itemcontroller extends Controller
         $item->price = $request->price;
         $item->seller = $request->seller;
         $item->email = $request->email;
-
+        
         //ファイルにimageをパスして画像ファイルを生成し、sorage/public/imageのに格納、$filenameに渡す
         $filename = $request->file('image')->store('public/image');
         // imageカラムの中に上で作成されたデータをbasenameメソッドで名前だけ保存
