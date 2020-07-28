@@ -38,7 +38,8 @@
       <img src="/storage/image/{{ $item->image }}">
     </p>
 
-    <a href="/item/{{ $item->id }}/edit"><button type="submit" class="btn btn-primary">編集する</button></a>
+    <a href="/items/{{ $item->id }}/edit"><button type="submit" class="btn btn-primary">編集する</button></a>
+    <a href="/items/{{ $item->id }}/delete"><button type="submit" class="btn btn-primary">削除する</button></a>
   </div>
 </body>
 

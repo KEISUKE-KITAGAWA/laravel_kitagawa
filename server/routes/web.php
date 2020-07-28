@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::resource('items', 'ItemController');
+Route::get('items/{item}/delete', 'ItemController@delete');

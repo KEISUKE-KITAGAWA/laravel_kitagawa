@@ -51,4 +51,45 @@ class Itemcontroller extends Controller
         return view('Items.show', ['item' => $item]);
     }
 
+    public function edit($id)
+    {
+        $item = Item::find($id);
+        return view('Items.edit', ['item' => $item]);
+    }
+
+    public function update(Request $request, $id )
+    {
+        $item = Item::find($id);
+
+        $item->name = $request->name;
+        $item->description = $request->description;
+        $item->price = $request->price;
+        $item->seller = $request->seller;
+        $item->email = $request->email;
+        
+        if($request->file('image')){
+            $filename = $request->file('image')->store('public/image');
+            $item->image = basename($filename);
+        }
+
+        $item->timestamps = false;
+
+        $item->save();
+
+        return redirect('/items');
+    }
+
+    public function delete($id) 
+    {
+        $item = Item::find($id);
+        return view('Items.delete', ['item' => $item]);
+    }
+
+    public function destroy($id) 
+    {
+        $item = Item::find($id);
+        $item->delete();
+        return redirect('/items');
+    }   
+
 }
