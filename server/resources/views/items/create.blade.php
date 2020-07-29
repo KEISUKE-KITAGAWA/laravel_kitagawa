@@ -10,6 +10,18 @@
 
 <body>
   <div class="container">
+    @if (count($errors) > 0)
+      <div>
+        <p>
+          <b>{{ count($errors) }}件のエラーがあります</b>
+        </p>
+        <ul>  
+          @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
     <h1>商品登録フォーム</h1>
     <form action="/items" method="post" enctype="multipart/form-data">
       @csrf
